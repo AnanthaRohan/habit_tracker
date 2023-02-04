@@ -1,0 +1,13 @@
+<li id="habit-<%= habit.id %>">
+  <%= link_to gravatar_for(habit.user, size: 50), habit.user %>
+  <span class="user"><%= link_to habit.user.name, habit.user %></span>
+  <span class="name"><%= habit.name %></span>
+  <span class="description"><%= habit.description %></span>
+  <span class="timestamp">
+    Created <%= time_ago_in_words(habit.created_at) %> ago.
+  </span>
+  <% if current_user?(habit.user) %>
+      <%= link_to "delete", habit, data: { "turbo-method": :delete,
+                                               turbo_confirm: "You sure?" } %>
+    <% end %>
+</li>

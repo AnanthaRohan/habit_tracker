@@ -8,4 +8,13 @@
       </h1>
     </section>
   </aside>
+  <div class="col-md-8">
+    <% if @user.habits.any? %>
+      <h3>Habits (<%= @user.habits.count %>)</h3>
+      <ol class="habits">
+        <%= render @habits %>
+      </ol>
+      <%= will_paginate @habits %>
+    <% end %>
+  </div>
 </div>
