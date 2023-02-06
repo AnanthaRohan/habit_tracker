@@ -1,16 +1,16 @@
 <% if @events.present? %>
-<%= render 'shared/event_form' %>
-
-<%= month_calendar do |date| %>
-<%@events.each do |event|%>
-<div class="<%= 'completed' if event.date == date %>">
-  <%= date.day %>
-</div>
-<%end%>
-<% end %>
+  <%= render 'shared/event_form' %>
+  <%= month_calendar do |date| %>
+    <% @events.each do |event|%>
+      <div class="<%= 'completed' if event.date == date %>">
+        <%= date.day %>
+      </div>
+    <% end %>
+  <% end %>
 <% else %>
-<%= render 'shared/event_form' %>
-<%= month_calendar do |date| %>
-  <%= date.day %>
+  <%= render 'shared/event_form' %>
+  <%= month_calendar do |date| %>
+    <%= date.day %>
+  <% end %>
 <% end %>
-<% end %>
+   
