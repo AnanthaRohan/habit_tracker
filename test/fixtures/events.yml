@@ -1,0 +1,11 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  date: 2023-02-05
+  habit: one
+  completed: false
+
+two:
+  date: 2023-02-05
+  habit: two
+  completed: false

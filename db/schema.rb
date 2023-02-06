@@ -10,7 +10,25 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_01_30_164316) do
+ActiveRecord::Schema[7.0].define(version: 2023_02_06_005227) do
+  create_table "calendars", force: :cascade do |t|
+    t.date "date"
+    t.boolean "completed"
+    t.integer "habit_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["habit_id"], name: "index_calendars_on_habit_id"
+  end
+
+  create_table "events", force: :cascade do |t|
+    t.date "date"
+    t.integer "habit_id", null: false
+    t.boolean "completed"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["habit_id"], name: "index_events_on_habit_id"
+  end
+
   create_table "habits", force: :cascade do |t|
     t.string "name"
     t.text "description"
@@ -31,5 +49,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_30_164316) do
     t.boolean "admin"
   end
 
+  add_foreign_key "calendars", "habits"
+  add_foreign_key "events", "habits"
   add_foreign_key "habits", "users"
 end

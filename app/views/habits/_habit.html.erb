@@ -9,5 +9,6 @@
   <% if current_user?(habit.user) %>
       <%= link_to "delete", habit, data: { "turbo-method": :delete,
                                                turbo_confirm: "You sure?" } %>
+      <a href="/habits/<%= habit.id %>">calendar</a>
     <% end %>
 </li>

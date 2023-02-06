@@ -10,7 +10,11 @@ Rails.application.routes.draw do
   post   "/login",   to: "sessions#create"
   delete "/logout",  to: "sessions#destroy"
   resources :users
-  resources :habits,          only: [:create, :destroy]
+  resources :habits,          only: [:create, :show, :destroy]
+  resources :events
+  resources :habits do
+    resources :events, only: [:create]
+  end
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Defines the root path route ("/")

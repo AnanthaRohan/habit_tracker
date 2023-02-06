@@ -12,6 +12,11 @@ class HabitsController < ApplicationController
     end
   end
 
+  def show
+    @habit = Habit.find(params[:id])
+    @events = @habit.events.order(date: :desc)
+  end
+
   def destroy
     @habit.destroy
     flash[:success] = "habit deleted"
