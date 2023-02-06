@@ -1,1 +1,5 @@
-Hello
+<%= form_with url: habit_events_path(@habit), method: :post do |form| %>
+  <%= form.hidden_field :habit_id, value: @habit.id %>
+  <%= form.label :date %>
+  <%= form.date_field :date %>
+  <%= form.submit 'Create event' %>
