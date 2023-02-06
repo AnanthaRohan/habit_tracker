@@ -1,10 +1,10 @@
 class EventsController < ApplicationController
     def create
-        @event = Event.new(event_params)
+        @event = Event.new(:habit_id => params[:habit_id] , :date => params[:date] , :completed => true )
         if @event.save
           redirect_to @event.habit
         else
-          render 'new'
+          render 'static_pages/home', status: :unprocessable_entity
         end
     end 
 

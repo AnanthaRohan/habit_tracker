@@ -1,20 +1,16 @@
 <% if @events.present? %>
-  <%= calendar @events do |event| %>
-    <div class="<%= 'completed' if event.completed %>">
-      <%= event.date.day %>
-    </div>
-    <%= form_with url: habit_events_path(@habit), method: :post do |form| %>
-  <%= form.hidden_field :habit_id, value: @habit.id %>
-  <%= form.label :date %>
-  <%= form.date_field :date %>
-  <%= form.submit 'Create event' %>
+<%= render 'shared/event_form' %>
+
+<%= month_calendar do |date| %>
+<%@events.each do |event|%>
+<div class="<%= 'completed' if event.date == date %>">
+  <%= date.day %>
+</div>
+<%end%>
 <% end %>
-  <% end %>
 <% else %>
-   <%= form_with url: habit_events_path(@habit), method: :post do |form| %>
-  <%= form.hidden_field :habit_id, value: @habit.id %>
-  <%= form.label :date %>
-  <%= form.date_field :date %>
-  <%= form.submit 'Create event' %>
+<%= render 'shared/event_form' %>
+<%= month_calendar do |date| %>
+  <%= date.day %>
 <% end %>
 <% end %>

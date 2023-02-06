@@ -15,6 +15,7 @@ class HabitsController < ApplicationController
   def show
     @habit = Habit.find(params[:id])
     @events = @habit.events.order(date: :desc)
+    @firstevent = @events.first
   end
 
   def destroy

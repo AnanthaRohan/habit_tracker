@@ -1,0 +1,6 @@
+<%= form_with url: events_path, method: :post do |form| %>
+  <%= form.hidden_field :habit_id, value: @habit.id %>
+  <%= form.label :date %>
+  <%= form.date_field :date %>
+  <%= form.submit 'Mark Completed' %>
+  <% end %>
